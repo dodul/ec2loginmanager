@@ -32,7 +32,7 @@ class User {
 
         $userPublicKeyInfo = json_decode($userPublicKeyInfoRaw);
         if (!$userPublicKeyInfo) {
-            throw new Exception("User $username does not exist: $userPublicKeyInfoRaw");
+            throw new Exception("User ".$this->userName." does not exist: $userPublicKeyInfoRaw");
         }
 
         $this->sshPublicKeyId = $userPublicKeyInfo->SSHPublicKeys[0]->SSHPublicKeyId;

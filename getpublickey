@@ -11,5 +11,5 @@ try {
     echo $publicKey;
 } catch (Exception $e) {
     $error = $e->getMessage();
-    file_put_contents('/tmp/errorlog', date('Y-m-d h:m:i')." $error \n", FILE_APPEND | LOCK_EX);
+    error_log(date('Y-m-d H:s:i')." $error\n", 3, "/tmp/ec2loginmanager".date('ymd').".log");
 }
