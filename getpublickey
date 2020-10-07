@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-include(__DIR__.'/class/User.php');
+include(__DIR__.'/class/user.php');
 
 try {
     $username = $argv[1];
