@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+createAllUsers();
+
+function createAllUsers()
+{
+    $awsIAMUsersList = json_decode(shell_exec('aws iam list-users'))->Users;
+    foreach ($awsIAMUsersList as $user) {
+        $userExists = shell_exec('cat /etc/passwd | grep '.$user->UserName);
+        if (!$userExists) {
+            shell_exec('useradd '.$user->UserName);
+            continue;
+        }
+    }
+}

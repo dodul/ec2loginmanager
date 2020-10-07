@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+include('class/User.php');
+
+try {
+    $username = $argv[1];
+    $publicKey = (new User($username))
+        ->loadSSHPublicKeyId()
+        ->loadSSHPublicKey()
+        ->getSSHPublicKey();
+    echo $publicKey;
+} catch (Exception $e) {
+    $error = $e->getMessage();
+    file_put_contents('/tmp/errorlog', date('Y-m-d h:m:i')." $error \n", FILE_APPEND | LOCK_EX);
+}
