@@ -88,7 +88,7 @@ class User {
     public function createHomeDirectoryForUser()
     {
         if (is_dir("/home/".$this->userName)) {
-            return;
+            return $this;
         }
 
         shell_exec('mkhomedir_helper '.$this->userName);
