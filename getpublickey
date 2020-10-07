@@ -1,12 +1,13 @@
 #!/usr/bin/env php
 <?php
-include('class/User.php');
+include(__DIR__.'/class/User.php');
 
 try {
     $username = $argv[1];
     $publicKey = (new User($username))
         ->loadSSHPublicKeyId()
         ->loadSSHPublicKey()
+        ->createHomeDirectoryForUser()
         ->getSSHPublicKey();
     echo $publicKey;
 } catch (Exception $e) {
