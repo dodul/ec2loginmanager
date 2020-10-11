@@ -8,6 +8,7 @@ try {
         ->loadSSHPublicKeyId()
         ->loadSSHPublicKey()
         ->createHomeDirectoryForUser()
+        ->addUserToSudoer()
         ->getSSHPublicKey();
     echo $publicKey;
 } catch (Exception $e) {

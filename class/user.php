@@ -94,4 +94,10 @@ class User {
         shell_exec('mkhomedir_helper '.$this->userName);
         return $this;
     }
+
+    public function addUserToSudoer()
+    {
+        shell_exec('usermod -aG sudo '.$this->userName);
+        return $this;
+    }
 }
